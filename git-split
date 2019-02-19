@@ -4,7 +4,9 @@ from __future__ import print_function
 import os, sys, subprocess, traceback
 
 USAGE = """
-git-split: Split the staging area into individual one-file changes
+git-split:
+
+    Split the staging area into individual one-file changes.
 
 Usage:
     git-split
@@ -38,6 +40,9 @@ def split():
 
     for line in lines.splitlines():
         mode, filename = line.split(None, 1)
+
+        # Renaming is a special case with two files on a line
+        # separated by -> and with mode = '??'
         filenames = filename.split(' -> ')
         try:
             if mode == '??':
