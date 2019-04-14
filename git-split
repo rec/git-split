@@ -46,7 +46,7 @@ def split():
         filenames = filename.split(' -> ')
         try:
             if mode == '??':
-                git('add', *filenames, cwd=root)
+                git('add', *filenames)
             git('commit', '-m', '[split] %s' % filenames[0], *filenames)
             splits += 1
 
